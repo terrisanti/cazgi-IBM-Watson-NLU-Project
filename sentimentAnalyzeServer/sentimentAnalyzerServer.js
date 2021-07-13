@@ -32,23 +32,6 @@ app.get("/",(req,res)=>{
     res.render('index.html');
   });
 
-/*app.get("/url/emotion", (req,res) => {
-
-    return res.send({"happy":"90","sad":"10"});
-});
-
-app.get("/url/sentiment", (req,res) => {
-    return res.send("url sentiment for "+req.query.url);
-});
-
-app.get("/text/emotion", (req,res) => {
-    return res.send({"happy":"10","sad":"90"});
-});
-
-app.get("/text/sentiment", (req,res) => {
-    return res.send("text sentiment for "+req.query.text);
-});*/
-
 app.get("/url/emotion", (req, res) => {
     const inputUrl = req.query.url;
     const urlAnalyzeParams = {
