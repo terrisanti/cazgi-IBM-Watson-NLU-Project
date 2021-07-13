@@ -5,20 +5,21 @@ import React from 'react';
 import axios from 'axios';
 
 class App extends React.Component {
-  state = {innercomp:<textarea rows="4" cols="50" id="textinput"/>,
-            mode: "text",
-          sentimentOutput:[],
-          sentiment:true
-        }
+    state = {
+        innercomp:<textarea rows="4" cols="50" id="textinput"/>,
+        mode: "text",
+        sentimentOutput:[],
+        sentiment:true
+    }
   
   renderTextArea = ()=>{
     document.getElementById("textinput").value = "";
     if(this.state.mode === "url") {
       this.setState({innercomp:<textarea rows="4" cols="50" id="textinput"/>,
-      mode: "text",
-      sentimentOutput:[],
-      sentiment:true
-    })
+            mode: "text",
+            sentimentOutput:[],
+            sentiment:true
+        })
     } 
   }
 
@@ -39,14 +40,18 @@ class App extends React.Component {
     let url = ".";
 
     if(this.state.mode === "url") {
-      url = url+"/url/sentiment?url="+document.getElementById("textinput").value;
+      url = url+
+            "/url/sentiment?url="+
+            document.getElementById("textinput").value;
     } else {
-      url = url+"/text/sentiment?text="+document.getElementById("textinput").value;
+      url = url+
+      "/text/sentiment?text="+
+      document.getElementById("textinput").value;
     }
     ret = axios.get(url);
     ret.then((response)=>{
 
-      //Include code here to check the sentiment and fomrat the data accordingly
+      //Include code here to check the sentiment and format the data accordingly
 
       this.setState({sentimentOutput:response.data});
       let output = response.data;
